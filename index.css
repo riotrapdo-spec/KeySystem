@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   ZEROTRACE — Global Styles
+   ═══════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff003c33;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff003c66;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEON TEXT GLOW
+   ═══════════════════════════════════════════════════════════ */
+
+.neon-text {
+  text-shadow:
+    0 0 7px #ff003c,
+    0 0 10px #ff003c,
+    0 0 21px #ff003c,
+    0 0 42px #ff003c44;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GLITCH TEXT EFFECT
+   ═══════════════════════════════════════════════════════════ */
+
+.glitch-text {
+  color: #ff003c;
+  position: relative;
+  display: inline-block;
+  text-shadow:
+    0 0 10px #ff003c66,
+    0 0 40px #ff003c22;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: #ff003c;
+  animation: glitch-1 3s infinite linear alternate-reverse;
+  clip-path: inset(0 0 80% 0);
+  text-shadow: -2px 0 #00ffff;
+}
+
+.glitch-text::after {
+  color: #ff003c;
+  animation: glitch-2 3s infinite linear alternate-reverse;
+  clip-path: inset(80% 0 0 0);
+  text-shadow: 2px 0 #ff00ff;
+}
+
+@keyframes glitch-1 {
+  0% { clip-path: inset(20% 0 60% 0); transform: translate(0); }
+  5% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 1px); }
+  10% { clip-path: inset(50% 0 30% 0); transform: translate(2px, -1px); }
+  15% { clip-path: inset(20% 0 60% 0); transform: translate(0); }
+  20% { clip-path: inset(80% 0 5% 0); transform: translate(-1px, 2px); }
+  25% { clip-path: inset(20% 0 60% 0); transform: translate(0); }
+  100% { clip-path: inset(20% 0 60% 0); transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+  0% { clip-path: inset(60% 0 20% 0); transform: translate(0); }
+  5% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -1px); }
+  10% { clip-path: inset(30% 0 50% 0); transform: translate(-2px, 1px); }
+  15% { clip-path: inset(60% 0 20% 0); transform: translate(0); }
+  20% { clip-path: inset(5% 0 80% 0); transform: translate(1px, -2px); }
+  25% { clip-path: inset(60% 0 20% 0); transform: translate(0); }
+  100% { clip-path: inset(60% 0 20% 0); transform: translate(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LOADING BAR ANIMATION
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes loading {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BACKGROUND GRID
+   ═══════════════════════════════════════════════════════════ */
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255, 0, 60, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 60, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Vignette */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SELECTION COLOR
+   ═══════════════════════════════════════════════════════════ */
+
+::selection {
+  background: #ff003c44;
+  color: #ff003c;
+}
